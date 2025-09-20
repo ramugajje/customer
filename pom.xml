@@ -88,6 +88,6 @@
 				</configuration>
 			</plugin>
 		</plugins>
+        <finalName>app</finalName>
 	</build>
-
 </project>
