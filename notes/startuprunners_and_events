@@ -1,0 +1,17 @@
+Some most important start up events in spring boot are:
+ApplicationContextInitializedEvent : triggered after ApplicationContext is prepared and ApplicationContextInitializers are called but before bean definitions are loaded
+ApplicationPreparedEvent : triggered after bean definitions are loaded
+ApplicationStartedEvent : triggered after context has been refreshed but before command-line and application runners are called
+ApplicationReadyEvent : triggered after any application and command-line runners are called
+ApplicationFailedEvent : triggered if there is an exception on startup
+
+
+Startup actions will be executed in the following order,
+Constructor
+PostContruct method
+afterPropertiesSet method
+Bean init Method
+ApplicationStartedEvent
+ApplicationRunner Or CommandLineRunner depends on Order
+ApplicationReadyEvent
+

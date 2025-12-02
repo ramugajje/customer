@@ -1,0 +1,40 @@
+@SpringBootApplication
+    -Combination of @EnableAutoConfiguration, @ComponentScan and @Configuration
+@EnableAutoConfiguration
+@ComponentScan
+@Configuration
+@SpringBootConfiguration
+
+
+@Component - Generic, can be used anywhere
+@Bean
+
+@Controller
+@ResponseBody
+@RestController
+@Autowired
+@PathVariable
+@RequestBody
+@RequestMapping(value = "/clients", method = RequestMethod.GET) --RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT
+@GetRequest  -- short form to @RequestMapping(value = "/clients", method = RequestMethod.GET)
+@PostRequest
+@PutRequest
+@DeleteRequest
+@Valid
+
+
+@Service -- clearer architecture for business logic- helps understand the purpose of the class
+
+
+@Repository - Used for JPA classes and convert database exceptions to DataAccessExceptions
+@RepositoryRestResource
+
+@Value - loads properties
+@Async
+@Scheduler
+
+@EnableWebSecurity – Enables Spring Security.
+@Transactional – Manages transactions automatically.
+
+@Sql
+@Order --ex: used for multiple same beans types, methods and fields @Order(1), @Order(2)

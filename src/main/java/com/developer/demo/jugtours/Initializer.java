@@ -1,7 +1,6 @@
 package com.developer.demo.jugtours;
 
 
-import com.developer.demo.model.Client;
 import com.developer.demo.model.Event;
 import com.developer.demo.model.Group;
 import com.developer.demo.repository.ClientRepository;
@@ -13,7 +12,7 @@ import java.time.Instant;
 import java.util.Collections;
 import java.util.stream.Stream;
 
-//@Component
+@Component
 class Initializer implements CommandLineRunner {
 
     private final GroupRepository repository;
@@ -40,8 +39,8 @@ class Initializer implements CommandLineRunner {
         repository.save(djug);
 
         repository.findAll().forEach(System.out::println);
-        clientRepository.save(Client.builder().id(1L).name("A").email("a@gmail.com").build());
-        clientRepository.save(Client.builder().id(2L).name("B").email("b@gmail.com").build());
-        clientRepository.save(Client.builder().id(3L).name("C").email("c@gmail.com").build());
+        //clientRepository.save(Client.builder().id(1L).name("A").email("a@gmail.com").build());
+        //clientRepository.save(Client.builder().id(2L).name("B").email("b@gmail.com").build());
+        //clientRepository.save(Client.builder().id(3L).name("C").email("c@gmail.com").build());
     }
 }

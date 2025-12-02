@@ -3,33 +3,40 @@ package com.developer.demo;
 import com.developer.demo.model.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 import java.util.Arrays;
 
 @SpringBootApplication
 @Slf4j
-public class DemoApplication   { //implements CommandLineRunner
+public class DemoApplication   implements CommandLineRunner, ApplicationRunner {
 
-	//@Autowired
-	//private CarRepository repository;
+	@Autowired
+	private CarRepository repository;
 
-	//@Autowired
-	//private OwnerRepository orepository;
+	@Autowired
+	private OwnerRepository orepository;
 
-	//@Autowired
-	//private UserRepository urepository;
+	@Autowired
+	private UserRepository urepository;
 
-	public static void main(String[] args) {
+	static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
+
 	}
 
-	/**
+
 
 	@Override
 		public void run(String... args) throws Exception {
+
+        System.out.println("###############   Implemented CommandLine Runner by main Application");
+
 		// Add owner objects and save these to db
 		Owner owner1 = new Owner("John" , "Johnson");
 		Owner owner2 = new Owner("Mary" , "Robinson");
@@ -52,6 +59,24 @@ public class DemoApplication   { //implements CommandLineRunner
 				"$2a$10$NVM0n8ElaRgg7zWO1CxUdei7vWoPg91Lz2aYavh9.f9q0e4bRadue","USER"));
 		urepository.save(new User("admin",
 				"$2a$10$8cjz47bjbR4Mn8GMg9IZx.vyjhLXR/SKKMSZ9.mP9vpMu0ssKi8GW", "ADMIN"));
-	}*/
+	}
+
+
+    @Bean
+    public CommandLineRunner runner(){
+        return (args) -> System.out.println("###############   From bean creation in main application");
+    }
+
+    @Override
+    public void run(ApplicationArguments args) throws Exception {
+
+        System.out.println("############## ApplicationRunner implemented");
+    }
+
+    @Bean
+    public ApplicationRunner applicationRunner(){
+        return (a) ->  System.out.println("############## ApplicationRunner Bean");
+    }
+
 
 }
