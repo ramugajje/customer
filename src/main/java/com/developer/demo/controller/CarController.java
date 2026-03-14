@@ -4,6 +4,7 @@ import com.developer.demo.model.Car;
 import com.developer.demo.model.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -13,7 +14,7 @@ public class CarController {
 	@Autowired
 	private CarRepository repository;
 
-	@RequestMapping("/cars")
+	@RequestMapping(value = "/cars", method = RequestMethod.GET)
 	public Iterable<Car> getCars() {
 		return repository.findAll();
 	}

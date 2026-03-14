@@ -28,6 +28,7 @@
 
 @Repository - Used for JPA classes and convert database exceptions to DataAccessExceptions
 @RepositoryRestResource
+@EnableJpaRepositories
 
 @Value - loads properties
 @Async
@@ -38,3 +39,84 @@
 
 @Sql
 @Order --ex: used for multiple same beans types, methods and fields @Order(1), @Order(2)
+
+
+
+
+**Quick Answer:**
+Spring’s `@Enable` annotations are used to **activate specific framework features** (like caching, scheduling, async processing, JPA repositories, etc.) without requiring verbose XML configuration. They are typically placed on a `@Configuration` or `@SpringBootApplication` class.
+
+---
+
+@EnableWebMvc
+  - Enables Spring MVC configuration.
+  - Equivalent to `<mvc:annotation-driven/>` in XML.
+  - Example:
+    @Configuration
+    @EnableWebMvc
+    public class WebConfig {
+        // MVC-related beans
+    }
+
+
+@EnableCaching
+  - Activates Spring’s caching abstraction.
+  - Example:
+    ```java
+    @SpringBootApplication
+    @EnableCaching
+    public class MyApp { }
+    ```
+
+@EnableScheduling
+  - Enables scheduled tasks using `@Scheduled`.
+  - Example:
+    ```java
+    @SpringBootApplication
+    @EnableScheduling
+    public class MyApp { }
+
+    @Component
+    public class JobRunner {
+        @Scheduled(fixedRate = 5000)
+        public void runJob() {
+            System.out.println("Running every 5 seconds");
+        }
+    }
+    ```
+
+@EnableAsync
+  - Allows asynchronous method execution with `@Async`.
+  - Example:
+    ```java
+    @SpringBootApplication
+    @EnableAsync
+    public class MyApp { }
+
+    @Service
+    public class EmailService {
+        @Async
+        public void sendEmail(String to) {
+            // runs asynchronously
+        }
+    }
+    ```
+
+@EnableJpaRepositories
+  - Enables JPA repository support (Spring Data JPA).
+  - Example:
+    ```java
+    @Configuration
+    @EnableJpaRepositories(basePackages = "com.example.repo")
+    public class JpaConfig { }
+    ```
+
+@EnableTransactionManagement
+  - Enables declarative transaction management with `@Transactional`.
+
+@EnableJpaAuditing
+  - Activates auditing features (e.g., automatically populating `createdDate`, `lastModifiedDate`).
+
+@EnableWebSocket
+  - Enables WebSocket support in Spring applications.
+
